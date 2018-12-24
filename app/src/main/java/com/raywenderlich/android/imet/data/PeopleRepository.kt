@@ -56,8 +56,12 @@ class PeopleRepository(application: Application) {
         peopleDao.insert(people)
     }
 
-    fun findPeople(id: Int): People {
+    fun findPeople(id: Int): LiveData<People> {
         return peopleDao.find(id)
+    }
+
+    fun findPeople(name: String): LiveData<List<People>> {
+        return peopleDao.findBy(name)
     }
 
 }
